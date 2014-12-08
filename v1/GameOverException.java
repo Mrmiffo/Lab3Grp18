@@ -1,4 +1,4 @@
-package v0;
+package v1;
 
 /**
  * Thrown by GameModel.doCommand at game termination. The exception contains
