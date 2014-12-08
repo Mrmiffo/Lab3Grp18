@@ -7,6 +7,7 @@ import javax.swing.JFrame;
  */
 public class Main {
 	public static void main(final String[] args) {
+		
 		// Create a new frame (a window)
 		JFrame frame = new JFrame();
 

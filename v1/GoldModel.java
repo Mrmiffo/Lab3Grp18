@@ -16,7 +16,7 @@ import java.util.List;
  * of remaining coins. The game is won when all coins are collected and lost when
  * collector leaves game board.
  */
-public class GoldModel extends GameModel {
+public class GoldModel implements GameModel {
 	public enum Directions {
 		EAST(1, 0),
 		WEST(-1, 0),
@@ -40,7 +40,7 @@ public class GoldModel extends GameModel {
 			return this.yDelta;
 		}
 	}
-
+	final GameTile[][] gameboardState = new GameTile[GameUtils.getGameboardSize().width][GameUtils.getGameboardSize().height];
 	private static final int COIN_START_AMOUNT = 20;
 
 	/*
@@ -88,18 +88,19 @@ public class GoldModel extends GameModel {
 	 * Create a new model for the gold game.
 	 */
 	public GoldModel() {
-		Dimension size = getGameboardSize();
+		Dimension size = GameUtils.getGameboardSize();
 
 		// Blank out the whole gameboard
 		for (int i = 0; i < size.width; i++) {
 			for (int j = 0; j < size.height; j++) {
-				setGameboardState(i, j, BLANK_TILE);
+				//gameboardState[i][j] = BLANK_TILE; JUST IN CASE
+				GameUtils.setGameboardState(gameboardState, i, j, BLANK_TILE);
 			}
 		}
 
 		// Insert the collector in the middle of the gameboard.
 		this.collectorPos = new Position(size.width / 2, size.height / 2);
-		setGameboardState(this.collectorPos, COLLECTOR_TILE);
+		GameUtils.setGameboardState(gameboardState, this.collectorPos, COLLECTOR_TILE);
 
 		// Insert coins into the gameboard.
 		for (int i = 0; i < COIN_START_AMOUNT; i++) {
@@ -112,7 +113,7 @@ public class GoldModel extends GameModel {
 	 */
 	private void addCoin() {
 		Position newCoinPos;
-		Dimension size = getGameboardSize();
+		Dimension size = GameUtils.getGameboardSize();
 		// Loop until a blank position is found and ...
 		do {
 			newCoinPos = new Position((int) (Math.random() * size.width),
@@ -120,7 +121,7 @@ public class GoldModel extends GameModel {
 		} while (!isPositionEmpty(newCoinPos));
 
 		// ... add a new coin to the empty tile.
-		setGameboardState(newCoinPos, COIN_TILE);
+		GameUtils.setGameboardState(gameboardState, newCoinPos, COIN_TILE);
 		this.coins.add(newCoinPos);
 	}
 
@@ -132,7 +133,8 @@ public class GoldModel extends GameModel {
 	 * @return true if position is empty.
 	 */
 	private boolean isPositionEmpty(final Position pos) {
-		return (getGameboardState(pos) == BLANK_TILE);
+		
+		return (gameboardState[pos.getX()][pos.getY()] == BLANK_TILE);
 	}
 
 	/**
@@ -180,7 +182,7 @@ public class GoldModel extends GameModel {
 		updateDirection(lastKey);
 
 		// Erase the previous position.
-		setGameboardState(this.collectorPos, BLANK_TILE);
+		GameUtils.setGameboardState(gameboardState, this.collectorPos, BLANK_TILE);
 		// Change collector position.
 		this.collectorPos = getNextCollectorPos();
 
@@ -188,7 +190,7 @@ public class GoldModel extends GameModel {
 			throw new GameOverException(this.score);
 		}
 		// Draw collector at new position.
-		setGameboardState(this.collectorPos, COLLECTOR_TILE);
+		GameUtils.setGameboardState(gameboardState, this.collectorPos, COLLECTOR_TILE);
 
 		// Remove the coin at the new collector position (if any)
 		if (this.coins.remove(this.collectorPos)) {
@@ -203,7 +205,7 @@ public class GoldModel extends GameModel {
 		// Remove one of the coins
 		Position oldCoinPos = this.coins.get(0);
 		this.coins.remove(0);
-		setGameboardState(oldCoinPos, BLANK_TILE);
+		GameUtils.setGameboardState(gameboardState, oldCoinPos, BLANK_TILE);
 
 		// Add a new coin (simulating moving one coin)
 		addCoin();
@@ -216,8 +218,13 @@ public class GoldModel extends GameModel {
 	 * @return <code>false</code> if the position is outside the playing field, <code>true</code> otherwise.
 	 */
 	private boolean isOutOfBounds(Position pos) {
-		return pos.getX() < 0 || pos.getX() >= getGameboardSize().width
-				|| pos.getY() < 0 || pos.getY() >= getGameboardSize().height;
+		return pos.getX() < 0 || pos.getX() >= GameUtils.getGameboardSize().width
+				|| pos.getY() < 0 || pos.getY() >= GameUtils.getGameboardSize().height;
+	}
+
+	public GameTile getGameboardState(int i, int j) {
+	
+		return gameboardState[i][j];
 	}
 
 }
