@@ -3,7 +3,7 @@ package v1;
 /**
  * Factory class for available games.
  */
-public class GameFactory implements IGameFactory {
+public class ReversiFactory implements IGameFactory {
 
 	/**
 	 * Returns an array with names of games this factory can create. Used by GUI
