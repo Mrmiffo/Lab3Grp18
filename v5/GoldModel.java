@@ -21,6 +21,7 @@ import java.util.List;
 public class GoldModel implements GameModel {
 	
 	PropertyChangeSupport action = new PropertyChangeSupport(this);
+	private final int updateInterval;
 	
 	public enum Directions {
 		EAST(1, 0),
@@ -94,6 +95,7 @@ public class GoldModel implements GameModel {
 	 */
 	public GoldModel() {
 		Dimension size = GameUtils.getGameboardSize();
+		updateInterval = 150;
 
 		// Blank out the whole gameboard
 		for (int i = 0; i < size.width; i++) {
@@ -241,6 +243,11 @@ public class GoldModel implements GameModel {
 	public void removeObserver(PropertyChangeListener observer) {
 		action.removePropertyChangeListener(observer);
 		
+	}
+
+	@Override
+	public int getUpdateSpeed() {
+		return updateInterval;
 	}
 
 }

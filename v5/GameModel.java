@@ -18,7 +18,7 @@ public interface GameModel extends IObservable{
 
 	public GameTile getGameboardState(int i, int j);
 
-
+	
 	/**
 	 * This method is called repeatedly so that the game can update it's state.
 	 * 
@@ -29,5 +29,4 @@ public interface GameModel extends IObservable{
 
 	public int getUpdateSpeed();
 	
-	public int setUpdateSpeed();
 }

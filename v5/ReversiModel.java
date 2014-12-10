@@ -82,11 +82,14 @@ public class ReversiModel implements GameModel {
 	private final int width;
 	private final int height;
 	private boolean gameOver;
+	/** The timeout interval between each update. (millis) */
+	private final int updateInterval;
 
 	public ReversiModel() {
 		this.width = Constants.getGameSize().width;
 		this.height = Constants.getGameSize().height;
 		this.board = new PieceColor[this.width][this.height];
+		this.updateInterval = 150;
 
 		// Blank out the whole gameboard...
 		for (int i = 0; i < this.width; i++) {
@@ -386,5 +389,12 @@ public class ReversiModel implements GameModel {
 		action.removePropertyChangeListener(observer);
 		
 	}
+
+	@Override
+	public int getUpdateSpeed() {
+		return updateInterval;
+	}
+
+	
 
 }

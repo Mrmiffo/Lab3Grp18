@@ -19,8 +19,7 @@ public class GameController implements Runnable {
 	/** The game model describes the running game. */
 	private GameModel gameModel;
 
-	/** The timeout interval between each update. (millis) */
-	private final int updateInterval;
+
 
 	/** True when game is running. */
 	private boolean isRunning;
@@ -49,7 +48,7 @@ public class GameController implements Runnable {
 		this.view = view;
 		this.gameModel = null;
 		this.isRunning = false;
-		this.updateInterval = 150;
+	
 
 		this.keypresses = new LinkedList<Integer>();
 
@@ -153,7 +152,7 @@ public class GameController implements Runnable {
 
 				this.view.repaint();
 
-				Thread.sleep(this.updateInterval);
+				Thread.sleep(gameModel.getUpdateSpeed());
 			} catch (GameOverException e) {
 				// we got a game over signal, time to exit...
 				// The current implementation ignores the game score
@@ -165,4 +164,5 @@ public class GameController implements Runnable {
 			}
 		}
 	}
+	
 }
