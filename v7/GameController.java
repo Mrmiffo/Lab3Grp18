@@ -1,5 +1,9 @@
 package v7;
-
+/*Anton Strandman && Maxim Goretskyy
+ *Grupp 18 Labb 3
+ *Version 1.7
+ * 
+ */
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
@@ -66,7 +70,7 @@ public class GameController implements Runnable {
 	}
 
 	/**
-	 * Add a key press to the end of the queue
+	 * Sends a key press directly to a model.
 	 */
 	private synchronized void enqueueKeyPress(final int key) {
 		if (gameModel.getUpdateSpeed() > 0){

@@ -1,5 +1,9 @@
 package v7;
-
+/*Anton Strandman && Maxim Goretskyy
+ *Grupp 18 Labb 3
+ *Version 1.7
+ * 
+ */
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.event.KeyEvent;
@@ -230,11 +234,11 @@ public class GoldModel implements GameModel {
 		return pos.getX() < 0 || pos.getX() >= GameUtils.getGameboardSize().width
 				|| pos.getY() < 0 || pos.getY() >= GameUtils.getGameboardSize().height;
 	}
-
+	
 	public GameTile getGameboardState(int i, int j) {
 		return gameboardState[i][j];
 	}
-
+	
 	@Override
 	public void addObserver(PropertyChangeListener observer) {
 		action.addPropertyChangeListener(observer);

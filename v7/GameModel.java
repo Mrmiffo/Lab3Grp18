@@ -1,21 +1,30 @@
 package v7;
-
+/*Anton Strandman && Maxim Goretskyy
+ *Grupp 18 Labb 3
+ *Version 1.7
+ * 
+ */
 import java.awt.Dimension;
 
 /**
- * Common superclass for all game model classes.
+ * Common interface for all game model classes.
  * 
- * Constructors of subclasses should initiate matrix elements and additional,
- * game-dependent fields.
+ * 
  */
 public interface GameModel extends IObservable{
 
-	/** A Matrix containing the state of the gameboard. */
+	
 	
 
 	/** The size of the state matrix. */
 	final Dimension gameboardSize = Constants.getGameSize();
 
+	/**
+	 * 
+	 * @param i is the x-axis value
+	 * @param j is the y-axis value
+	 * @return GameTile at the given position
+	 */
 	public GameTile getGameboardState(int i, int j);
 
 	
@@ -26,7 +35,10 @@ public interface GameModel extends IObservable{
 	 *            The most recent keystroke.
 	 */
 	public void gameUpdate(int lastKey) throws GameOverException;
-
+	/**
+	 * 
+	 * @return speed interval
+	 */
 	public int getUpdateSpeed();
 	
 }

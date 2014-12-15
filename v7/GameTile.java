@@ -1,5 +1,9 @@
 package v7;
-
+/*Anton Strandman && Maxim Goretskyy
+ *Grupp 18 Labb 3
+ *Version 1.7
+ * 
+ */
 import java.awt.Dimension;
 import java.awt.Graphics;
 

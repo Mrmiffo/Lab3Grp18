@@ -1,5 +1,9 @@
 package v7;
-
+/*Anton Strandman && Maxim Goretskyy
+ *Grupp 18 Labb 3
+ *Version 1.7
+ * 
+ */
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Event;
@@ -179,8 +183,7 @@ public class ReversiModel implements GameModel {
 				this.board[this.cursorPos.getX()][this.cursorPos.getY()] = (this.turn == Turn.BLACK ? PieceColor.BLACK
 						: PieceColor.WHITE);
 				action.firePropertyChange("ScoreUpdate", 0, 1);
-//				System.out.println("Bong! White: " + this.whiteScore
-//						+ "\tBlack: " + this.blackScore);
+
 				this.turn = Turn.nextTurn(this.turn);
 			}
 			if (!canTurn(this.turn)) {

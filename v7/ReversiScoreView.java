@@ -1,8 +1,16 @@
 package v7;
-
+/*Anton Strandman && Maxim Goretskyy
+ *Grupp 18 Labb 3
+ *Version 1.7
+ * 
+ */
 import java.beans.PropertyChangeEvent;
 import java.beans.PropertyChangeListener;
-
+/**
+ * Class that prints the score and turn color. 
+ *
+ *
+ */
 public class ReversiScoreView implements PropertyChangeListener{
 
 	@Override

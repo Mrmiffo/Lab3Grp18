@@ -1,5 +1,9 @@
 package v7;
-
+/*Anton Strandman && Maxim Goretskyy
+ *Grupp 18 Labb 3
+ *Version 1.7
+ * 
+ */
 import java.awt.Dimension;
 
 public class GameUtils{
@@ -7,7 +11,7 @@ public class GameUtils{
 	
 	/**
 	 * Set the tile on a specified position in the gameboard.
-	 * 
+	 * @param board takes in 2D-array of the board
 	 * @param pos
 	 *            The position in the gameboard matrix.
 	 * @param tile
@@ -22,6 +26,7 @@ public class GameUtils{
 	/**
 	 * Set the tile on a specified position in the gameboard.
 	 * 
+	 * @param board takes in 2D-array of the board
 	 * @param x
 	 *            Coordinate in the gameboard matrix.
 	 * @param y

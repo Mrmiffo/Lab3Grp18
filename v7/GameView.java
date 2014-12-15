@@ -1,5 +1,9 @@
 package v7;
-
+/*Anton Strandman && Maxim Goretskyy
+ *Grupp 18 Labb 3
+ *Version 1.7
+ * 
+ */
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Font;
@@ -59,18 +63,24 @@ public class GameView extends JComponent implements PropertyChangeListener{
 	public void setModel(final GameModel model) {
 		removeListener(model);
 		this.model = model;
-		addListener();
+		addListener(model);
 		repaint();
 	}
-
+	/**Removes a listener to a given GameModel
+	 * 
+	 * @param model takes in a gameModel
+	 */
 	private void removeListener(GameModel model) {
 		if (!(model==null)){
 			model.removeObserver(this);
 		}
 		
 	}
-
-	private void addListener() {
+	/**Adds a listener to a given GameModel
+	 * 
+	 * @param model takes in a gameModel
+	 */
+	private void addListener(GameModel model) {
 		if (!(model==null)){
 			model.addObserver(this);
 		}
@@ -127,6 +137,9 @@ public class GameView extends JComponent implements PropertyChangeListener{
 		}
 	}
 
+	/**
+	 * Repaints the View when an event is fired.
+	 */
 	@Override
 	public void propertyChange(PropertyChangeEvent evt) {
 		if(evt.getPropertyName() == "Update Reversi"){
