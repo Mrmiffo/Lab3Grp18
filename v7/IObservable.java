@@ -6,4 +6,5 @@ public interface IObservable{
 	public void addObserver(PropertyChangeListener observer);
 	public void removeObserver(PropertyChangeListener observer);
 	
+	
 }
