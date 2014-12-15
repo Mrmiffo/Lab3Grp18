@@ -77,7 +77,9 @@ public class GameController implements Runnable {
 			this.keypresses.add(Integer.valueOf(key));
 		} else {
 			try {
-				gameModel.gameUpdate(key);
+				if (isRunning){
+					gameModel.gameUpdate(key);
+				}
 			} catch (GameOverException e) {
 				gameOver(e);
 			}
