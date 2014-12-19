@@ -142,7 +142,7 @@ public class GameView extends JComponent implements PropertyChangeListener{
 	 */
 	@Override
 	public void propertyChange(PropertyChangeEvent evt) {
-		if(evt.getPropertyName() == "Update Reversi"){
+		if(evt.getPropertyName() == "Update Game"){
 			repaint();
 		}
 	}

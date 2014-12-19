@@ -341,7 +341,7 @@ public class ReversiModel implements GameModel {
 		} else {
 			throw new GameOverException(this.blackScore - this.whiteScore);
 		}
-		action.firePropertyChange("Update Reversi", 0, 1);
+		action.firePropertyChange("Update Game", 0, 1);
 	}
 
 	private void removeCursor(final Position oldCursorPos) {
